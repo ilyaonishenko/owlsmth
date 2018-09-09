@@ -275,18 +275,17 @@ namespace owl
                 string sub = sel11.ToString();
                 sub = " :" + sub;
                 string getInsomnia = @"
-PREFIX :<https://ddddtryyaiafarjfka.blogspot.ru/>
-PREFIX mypref: <https://ddddtryyaiafarjfka.blogspot.ru/mypref/>
-PREFIX mn: <https://ddddtryyaiafarjfka.blogspot.ru/mn/>
-PREFIX cs: <https://ddddtryyaiafarjfka.blogspot.ru/cs/>
-PREFIX icb: <https://ddddtryyaiafarjfka.blogspot.ru/icb/>
-PREFIX iot: <https://ddddtryyaiafarjfka.blogspot.ru/iot/>
-PREFIX hp: <https://ddddtryyaiafarjfka.blogspot.ru/hp/>
-PREFIX call: <https://ddddtryyaiafarjfka.blogspot.ru/call/>
-PREFIX bg: <https://ddddtryyaiafarjfka.blogspot.ru/bg/>
+PREFIX :<http://wopqw.blogspot.com/>
 PREFIX schema:<http://schema.org/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf:<http://xmlns.com/foaf/0.1/>
+PREFIX dbo:<http://dbpedia.org/ontology/>
+PREFIX yago:<http://yago-knowledge.org/resource/>
+PREFIX skos:<http://www.w3.org/2004/02/skos/core/>
+PREFIX dcterms:<http://purl.org/dc/elements/1.1/subject>
+PREFIX oplweb:<http://www.openlinksw.com/schemas/oplweb#>
+PREFIX cc:<https://creativecommons.org/ns#>
 	        SELECT  ?prop ?obj
 	        WHERE 
 	        { 
@@ -313,44 +312,28 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                 int sel2 = comboBox3.SelectedIndex;
                 Object sel22 = comboBox3.SelectedItem;
                 string prop = sel22.ToString();
-                if (prop == "causes") prop = "cs:" + prop;
-                else if (prop.StartsWith("means"))
-                    prop = "mn:" + prop;
-                else if (prop.StartsWith("inOrderTo"))
-                    prop = "iot:" + prop;
-                else if (prop.StartsWith("type"))
-                    prop = "rdf:" + prop;
-                else if (prop.StartsWith("subClassOf"))
-                    prop = "rdfs:" + prop;
-                else if (prop.StartsWith("isCausedBy"))
-                    prop = "icb:" + prop;
-                else if (prop.StartsWith("hasProperty"))
-                    prop = "hp:" + prop;
-                else if (prop.StartsWith("belong"))
-                    prop = "bg:" + prop;
-                else if (prop.StartsWith("isPartOf"))
-                    prop = "schema:" + prop;
-                else if (prop.StartsWith("canCall"))
-                    prop = "call:" + prop;
-                else if (prop.StartsWith("manage"))
-                    prop = ":" + prop;
-                else if (prop.StartsWith("actionStatus"))
-                    prop = "schema:" + prop;
-                else if (prop.StartsWith("name"))
-                    prop = "schema:" + prop;
+                if (prop == "isDefinedBy") prop = "oplweb:" + prop;
+                else if (prop.StartsWith("type")) prop = "rdf:" + prop;
+                else if (prop.StartsWith("subClassOf")) prop = "rdfs:" + prop;
+                else if (prop.StartsWith("isPartOf")) prop = "schema:" + prop;
+                else if (prop.StartsWith("name")) prop = "foaf:" + prop;
+                else if (prop.StartsWith("license")) prop = "cc:" + prop;
+                else if (prop.StartsWith("morePermissions")) prop = "cc:" + prop; 
+                else if (prop.StartsWith("attributionName")) prop = "cc:" + prop;
+                else if (prop.StartsWith("description")) prop = "dcterms:" + prop;
+
                 string getInsomnia = @"
-PREFIX :<https://ddddtryyaiafarjfka.blogspot.ru/>
-PREFIX mypref: <https://ddddtryyaiafarjfka.blogspot.ru/mypref/>
-PREFIX mn: <https://ddddtryyaiafarjfka.blogspot.ru/mn/>
-PREFIX cs: <https://ddddtryyaiafarjfka.blogspot.ru/cs/>
-PREFIX icb: <https://ddddtryyaiafarjfka.blogspot.ru/icb/>
-PREFIX iot: <https://ddddtryyaiafarjfka.blogspot.ru/iot/>
-PREFIX hp: <https://ddddtryyaiafarjfka.blogspot.ru/hp/>
-PREFIX call: <https://ddddtryyaiafarjfka.blogspot.ru/call/>
-PREFIX bg: <https://ddddtryyaiafarjfka.blogspot.ru/bg/>
+PREFIX :<http://wopqw.blogspot.com/>
 PREFIX schema:<http://schema.org/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf:<http://xmlns.com/foaf/0.1/>
+PREFIX dbo:<http://dbpedia.org/ontology/>
+PREFIX yago:<http://yago-knowledge.org/resource/>
+PREFIX skos:<http://www.w3.org/2004/02/skos/core/>
+PREFIX dcterms:<http://purl.org/dc/elements/1.1/subject>
+PREFIX oplweb:<http://www.openlinksw.com/schemas/oplweb#>
+PREFIX cc:<https://creativecommons.org/ns#>
 	        SELECT  ?sub ?obj
 	        WHERE 
 	        { 
@@ -385,18 +368,17 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                 else if (!obj.StartsWith("?"))
                     obj = ":" + obj;
                 string getInsomnia = @"
-PREFIX :<https://ddddtryyaiafarjfka.blogspot.ru/>
-PREFIX mypref: <https://ddddtryyaiafarjfka.blogspot.ru/mypref/>
-PREFIX mn: <https://ddddtryyaiafarjfka.blogspot.ru/mn/>
-PREFIX cs: <https://ddddtryyaiafarjfka.blogspot.ru/cs/>
-PREFIX icb: <https://ddddtryyaiafarjfka.blogspot.ru/icb/>
-PREFIX iot: <https://ddddtryyaiafarjfka.blogspot.ru/iot/>
-PREFIX hp: <https://ddddtryyaiafarjfka.blogspot.ru/hp/>
-PREFIX call: <https://ddddtryyaiafarjfka.blogspot.ru/call/>
-PREFIX bg: <https://ddddtryyaiafarjfka.blogspot.ru/bg/>
+PREFIX :<http://wopqw.blogspot.com/>
 PREFIX schema:<http://schema.org/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf:<http://xmlns.com/foaf/0.1/>
+PREFIX dbo:<http://dbpedia.org/ontology/>
+PREFIX yago:<http://yago-knowledge.org/resource/>
+PREFIX skos:<http://www.w3.org/2004/02/skos/core/>
+PREFIX dcterms:<http://purl.org/dc/elements/1.1/subject>
+PREFIX oplweb:<http://www.openlinksw.com/schemas/oplweb#>
+PREFIX cc:<https://creativecommons.org/ns#>
 	        SELECT  ?sub ?prop
 	        WHERE 
 	        { 
@@ -462,44 +444,27 @@ PREFIX :<https://ddddtryyaiafarjfka.blogspot.ru/>
                 int sel2 = comboBox3.SelectedIndex;
                 Object sel22 = comboBox3.SelectedItem;
                 string prop = sel22.ToString();
-                if (prop == "causes") prop = "cs:" + prop;
-                else if (prop.StartsWith("means"))
-                    prop = "mn:" + prop;
-                else if (prop.StartsWith("inOrderTo"))
-                    prop = "iot:" + prop;
-                else if (prop.StartsWith("type"))
-                    prop = "rdf:" + prop;
-                else if (prop.StartsWith("subClassOf"))
-                    prop = "rdfs:" + prop;
-                else if (prop.StartsWith("isCausedBy"))
-                    prop = "icb:" + prop;
-                else if (prop.StartsWith("hasProperty"))
-                    prop = "hp:" + prop;
-                else if (prop.StartsWith("belong"))
-                    prop = "bg:" + prop;
-                else if (prop.StartsWith("isPartOf"))
-                    prop = "schema:" + prop;
-                else if (prop.StartsWith("canCall"))
-                    prop = "call:" + prop;
-                else if (prop.StartsWith("manage"))
-                    prop = ":" + prop;
-                else if (prop.StartsWith("actionStatus"))
-                    prop = "schema:" + prop;
-                else if (prop.StartsWith("name"))
-                    prop = "schema:" + prop;
+                if (prop == "isDefinedBy") prop = "oplweb:" + prop;
+                else if (prop.StartsWith("type")) prop = "rdf:" + prop;
+                else if (prop.StartsWith("subClassOf")) prop = "rdfs:" + prop;
+                else if (prop.StartsWith("isPartOf")) prop = "schema:" + prop;
+                else if (prop.StartsWith("name")) prop = "foaf:" + prop;
+                else if (prop.StartsWith("license")) prop = "cc:" + prop;
+                else if (prop.StartsWith("morePermissions")) prop = "cc:" + prop;
+                else if (prop.StartsWith("attributionName")) prop = "cc:" + prop;
+                else if (prop.StartsWith("description")) prop = "dcterms:" + prop;
                 string getInsomnia = @"
-PREFIX :<https://ddddtryyaiafarjfka.blogspot.ru/>
-PREFIX mypref: <https://ddddtryyaiafarjfka.blogspot.ru/mypref/>
-PREFIX mn: <https://ddddtryyaiafarjfka.blogspot.ru/mn/>
-PREFIX cs: <https://ddddtryyaiafarjfka.blogspot.ru/cs/>
-PREFIX icb: <https://ddddtryyaiafarjfka.blogspot.ru/icb/>
-PREFIX iot: <https://ddddtryyaiafarjfka.blogspot.ru/iot/>
-PREFIX hp: <https://ddddtryyaiafarjfka.blogspot.ru/hp/>
-PREFIX call: <https://ddddtryyaiafarjfka.blogspot.ru/call/>
-PREFIX bg: <https://ddddtryyaiafarjfka.blogspot.ru/bg/>
+PREFIX :<http://wopqw.blogspot.com/>
 PREFIX schema:<http://schema.org/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf:<http://xmlns.com/foaf/0.1/>
+PREFIX dbo:<http://dbpedia.org/ontology/>
+PREFIX yago:<http://yago-knowledge.org/resource/>
+PREFIX skos:<http://www.w3.org/2004/02/skos/core/>
+PREFIX dcterms:<http://purl.org/dc/elements/1.1/subject>
+PREFIX oplweb:<http://www.openlinksw.com/schemas/oplweb#>
+PREFIX cc:<https://creativecommons.org/ns#>
 	        SELECT  ?prop ?obj
 	        WHERE 
 	        { 
@@ -535,44 +500,27 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                 int sel3 = comboBox3.SelectedIndex;
                 Object sel33 = comboBox3.SelectedItem;
                 string prop = sel33.ToString();
-                if (prop == "causes") prop = "cs:" + prop;
-                else if (prop.StartsWith("means"))
-                    prop = "mn:" + prop;
-                else if (prop.StartsWith("inOrderTo"))
-                    prop = "iot:" + prop;
-                else if (prop.StartsWith("type"))
-                    prop = "rdf:" + prop;
-                else if (prop.StartsWith("subClassOf"))
-                    prop = "rdfs:" + prop;
-                else if (prop.StartsWith("isCausedBy"))
-                    prop = "icb:" + prop;
-                else if (prop.StartsWith("hasProperty"))
-                    prop = "hp:" + prop;
-                else if (prop.StartsWith("belong"))
-                    prop = "bg:" + prop;
-                else if (prop.StartsWith("isPartOf"))
-                    prop = "schema:" + prop;
-                else if (prop.StartsWith("canCall"))
-                    prop = "call:" + prop;
-                else if (prop.StartsWith("manage"))
-                    prop = ":" + prop;
-                else if (prop.StartsWith("actionStatus"))
-                    prop = "schema:" + prop;
-                else if (prop.StartsWith("name"))
-                    prop = "schema:" + prop;
+                if (prop == "isDefinedBy") prop = "oplweb:" + prop;
+                else if (prop.StartsWith("type")) prop = "rdf:" + prop;
+                else if (prop.StartsWith("subClassOf")) prop = "rdfs:" + prop;
+                else if (prop.StartsWith("isPartOf")) prop = "schema:" + prop;
+                else if (prop.StartsWith("name")) prop = "foaf:" + prop;
+                else if (prop.StartsWith("license")) prop = "cc:" + prop;
+                else if (prop.StartsWith("morePermissions")) prop = "cc:" + prop;
+                else if (prop.StartsWith("attributionName")) prop = "cc:" + prop;
+                else if (prop.StartsWith("description")) prop = "dcterms:" + prop;
                 string getInsomnia = @"
-PREFIX :<https://ddddtryyaiafarjfka.blogspot.ru/>
-PREFIX mypref: <https://ddddtryyaiafarjfka.blogspot.ru/mypref/>
-PREFIX mn: <https://ddddtryyaiafarjfka.blogspot.ru/mn/>
-PREFIX cs: <https://ddddtryyaiafarjfka.blogspot.ru/cs/>
-PREFIX icb: <https://ddddtryyaiafarjfka.blogspot.ru/icb/>
-PREFIX iot: <https://ddddtryyaiafarjfka.blogspot.ru/iot/>
-PREFIX hp: <https://ddddtryyaiafarjfka.blogspot.ru/hp/>
-PREFIX call: <https://ddddtryyaiafarjfka.blogspot.ru/call/>
-PREFIX bg: <https://ddddtryyaiafarjfka.blogspot.ru/bg/>
+PREFIX :<http://wopqw.blogspot.com/>
 PREFIX schema:<http://schema.org/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf:<http://xmlns.com/foaf/0.1/>
+PREFIX dbo:<http://dbpedia.org/ontology/>
+PREFIX yago:<http://yago-knowledge.org/resource/>
+PREFIX skos:<http://www.w3.org/2004/02/skos/core/>
+PREFIX dcterms:<http://purl.org/dc/elements/1.1/subject>
+PREFIX oplweb:<http://www.openlinksw.com/schemas/oplweb#>
+PREFIX cc:<https://creativecommons.org/ns#>
 	        SELECT  ?sub 
 	        WHERE 
 	        { 
@@ -599,6 +547,11 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             comboBox3.Text = "";
             comboBox2.Text = "";
             dataGridView1.Rows.Clear();
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
