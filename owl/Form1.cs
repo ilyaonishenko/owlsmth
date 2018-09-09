@@ -584,5 +584,10 @@ PREFIX cc:<https://creativecommons.org/ns#>
         {
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
