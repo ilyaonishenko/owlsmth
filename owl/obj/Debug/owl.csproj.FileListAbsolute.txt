@@ -16,11 +16,6 @@ C:\Users\Гуртовая\Desktop\МАГИСТРАТУРА\5 курс 2 семе
 C:\Users\ilyaonishenko\university\ki\owl\owl\bin\Debug\owl.exe.config
 C:\Users\ilyaonishenko\university\ki\owl\owl\bin\Debug\owl.exe
 C:\Users\ilyaonishenko\university\ki\owl\owl\bin\Debug\owl.pdb
-C:\Users\ilyaonishenko\university\ki\owl\owl\bin\Debug\dotNetRDF.pdb
-C:\Users\ilyaonishenko\university\ki\owl\owl\bin\Debug\dotNetRDF.xml
-C:\Users\ilyaonishenko\university\ki\owl\owl\bin\Debug\dotNetRDF.Core.pdb
-C:\Users\ilyaonishenko\university\ki\owl\owl\bin\Debug\dotNetRDF.Core.xml
-C:\Users\ilyaonishenko\university\ki\owl\owl\obj\Debug\owl.csprojAssemblyReference.cache
 C:\Users\ilyaonishenko\university\ki\owl\owl\obj\Debug\owl.exe.config
 C:\Users\ilyaonishenko\university\ki\owl\owl\obj\Debug\owl.Form1.resources
 C:\Users\ilyaonishenko\university\ki\owl\owl\obj\Debug\owl.Properties.Resources.resources
@@ -29,3 +24,4 @@ C:\Users\ilyaonishenko\university\ki\owl\owl\obj\Debug\owl.csproj.CoreCompileInp
 C:\Users\ilyaonishenko\university\ki\owl\owl\obj\Debug\owl.csproj.CopyComplete
 C:\Users\ilyaonishenko\university\ki\owl\owl\obj\Debug\owl.exe
 C:\Users\ilyaonishenko\university\ki\owl\owl\obj\Debug\owl.pdb
+C:\Users\ilyaonishenko\university\ki\owl\owl\obj\Debug\owl.csprojAssemblyReference.cache

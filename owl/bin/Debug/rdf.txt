@@ -77,8 +77,6 @@
 :model foaf:name :digitalTwin.
 :usedAlgorithms rdf:type skos:Collection ;
 	skos:member :randomForest, :kNN.
-:reinforcementLearningAlgorithms rdf:type skos:Collection;
-	skos:memberList (:deepQNetwork :stateActionRewardStateAction :deepAdversarialNetworks).
 :tools schema:isPartOf :softwarePackages.
 :IDE schema:isPartOf :tools.
 :git schema:isPartOf :tools.
@@ -99,7 +97,7 @@
 :commandParser schema:isPartOf :workstationModule.
 :tilesLocationVisualizer schema:isPartOf :GUI.
 :availiableMovesVisualizer schema:isPartOf :GUI.
-:gameStatusVisualizer schema:IsPartOf :GUI.
+:gameStatusVisualizer schema:isPartOf :GUI.
 :linux cc:license :GPLv2.
 :linux cc:morePermissions cc:reproduction.
 :linux cc:morePermissions cc:distribution.
@@ -118,7 +116,7 @@
 :reinforcementLearningAlgorithms a dbo:type.
 :digitalTwin a dbo:type.
 :machineLearning a dbo:type.
-:correlation schema:IsPartOf :machineLearning.
+:correlation schema:isPartOf :machineLearning.
 :softwarePackages schema:isPartOf :controlSystem.
 :technologicalProcess schema:isPartOf :controlSystem.
 :sensor schema:isPartOf :digitalTwin.
@@ -133,19 +131,19 @@
 :variables schema:isPartOf :programmingLanguage.
 :methods schema:isPartOf :programmingLanguage.
 :IDE schema:isPartOf :developmentTools.
-:laptop schema:IsPartOf :developmentTools.
+:laptop schema:isPartOf :developmentTools.
 :machineVision schema:isPartOf :machineLearning.
 :machineVision schema:isPartOf :digitalTwin.
 :correlation rdf:type :machineLearning.
 :multilayerPerceptron rdf:type :artificialNeuralNetwork.
 :Modelica schema:isPartOf :developmentTools.
-:git schema:IsPartOf :developmentTools.
-:svn schema:IsPartOf :developmentTools.
-:mercurial schema:IsPartOf :developmentTools.
-:jira schema:IsPartOf :developmentTools.
-:knowledgeBase schema:IsPartOf :developmentTools.
-:slack schema:IsPartOf :developmentTools.
-:jenkins schema:IsPartOf :developmentTools.
+:git schema:isPartOf :developmentTools.
+:svn schema:isPartOf :developmentTools.
+:mercurial schema:isPartOf :developmentTools.
+:jira schema:isPartOf :developmentTools.
+:knowledgeBase schema:isPartOf :developmentTools.
+:slack schema:isPartOf :developmentTools.
+:jenkins schema:isPartOf :developmentTools.
 :git rdf:type :versionControlSystem.
 :svn rdf:type :versionControlSystem.
 :mercurial rdf:type :versionControlSystem.
@@ -154,8 +152,8 @@
 :bitbucket rdf:type :git.
 :jenkins rdf:type :continiousIntegrationTool.
 :travisCI rdf:type :continiousIntegrationTool.
-:Java schema:IsPartOf :JVM.
-:librariesRepository schema:IsPartOf :developmentTools.
+:Java schema:isPartOf :JVM.
+:librariesRepository schema:isPartOf :developmentTools.
 :programmableLogicControllers schema:isPartOf :digitalTwin.
 :maven rdf:type :librariesRepository.
 :gradle rdf:type :librariesRepository.

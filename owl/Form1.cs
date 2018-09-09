@@ -346,8 +346,9 @@ PREFIX cc:<https://creativecommons.org/ns#>
                 else if (prop.StartsWith("license")) prop = "cc:" + prop;
                 else if (prop.StartsWith("morePermissions")) prop = "cc:" + prop; 
                 else if (prop.StartsWith("attributionName")) prop = "cc:" + prop;
-                else if (prop.StartsWith("description")) prop = "dcterms:" + prop;
-
+                else if (prop.StartsWith("memberList")) prop = "skos:" + prop;
+                else if (prop.StartsWith("member")) prop = "skos:" + prop;
+                else if (prop.StartsWith("subjectdescri")) prop = "skos:" + prop;
                 string getInsomnia = @"
 PREFIX :<http://wopqw.blogspot.com/>
 PREFIX schema:<http://schema.org/>
