@@ -46,6 +46,10 @@ namespace owl
             var parser = new Notation3Parser();
             var graph = new Graph();
             parser.Load(graph, @"rdf.txt");
+
+            //var owlGraph = new Graph();
+            //owlGraph.LoadFromFile("rdf.owl", new TurtleParser());
+
             ListBox listBox1 = new ListBox();
             ListBox listBox2 = new ListBox();
             ListBox listBox3 = new ListBox();
@@ -56,6 +60,12 @@ namespace owl
                 listBox2.Items.Add(GetNodeString(triple.Object));
                 listBox3.Items.Add(GetNodeString(triple.Predicate));
             }
+            /*foreach (Triple triple in owlGraph.Triples)
+            {
+                listBox1.Items.Add(GetNodeString(triple.Subject));
+                listBox2.Items.Add(GetNodeString(triple.Object));
+                listBox3.Items.Add(GetNodeString(triple.Predicate));
+            }*/
             //выводит все объекты, субъекты и индивиды в комбобокс без повторений
             for (int i = 0; i < listBox1.Items.Count; i++)
             {
@@ -101,8 +111,14 @@ namespace owl
             var parser = new Notation3Parser();
             var graph = new Graph();
             parser.Load(graph, @"rdf.txt");
+
+           // var owlGraph = new Graph();
+          //  owlGraph.LoadFromFile("rdf.owl", new TurtleParser());
+
             int number_triplets;
+            //number_triplets = graph.Triples.Count + owlGraph.Triples.Count;
             number_triplets = graph.Triples.Count;
+
             dataGridView1.RowCount = number_triplets;
             Column1.HeaderText = "Subject";
             Column2.HeaderText = "Property";
@@ -121,6 +137,16 @@ namespace owl
                     dataGridView1.Rows[i].Cells[1].Value = listbox2.Items[i];
                     dataGridView1.Rows[i].Cells[2].Value = listbox3.Items[i];
                 }
+
+                /*foreach (Triple triple in owlGraph.Triples)
+                {
+                    listbox1.Items.Add(GetNodeString(triple.Subject));
+                    listbox2.Items.Add(GetNodeString(triple.Predicate));
+                    listbox3.Items.Add(GetNodeString(triple.Object));
+                    dataGridView1.Rows[i].Cells[0].Value = listbox1.Items[i];
+                    dataGridView1.Rows[i].Cells[1].Value = listbox2.Items[i];
+                    dataGridView1.Rows[i].Cells[2].Value = listbox3.Items[i];
+                }*/
             }
             textBox2.Text = Convert.ToString(number_triplets);            
         }
@@ -550,6 +576,11 @@ PREFIX cc:<https://creativecommons.org/ns#>
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

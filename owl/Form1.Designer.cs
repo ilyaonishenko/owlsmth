@@ -124,6 +124,7 @@
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 19;
             this.label1.Text = "Number of triplets";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox2
             // 

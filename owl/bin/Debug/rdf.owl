@@ -1,167 +1,111 @@
-:digitalTwin schema:isPartOf :controlSystemPatterns.
+@prefix :<http://wopqw.blogspot.com/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+:unstructuredData a owl:Class.
+:semiStructuredData a owl:Class.
+:bigData a owl:Class;
+   owl:unionOf (:unstructuredData :bigDataPattern).
+:machineLearningAlgorithms a owl:Class.
+:dataStorage a owl:Class.
+:machineLearning a owl:Class;
+    owl:intersectionOf (:dataStorage :machineLearningAlgorithms).
+:linearRegression a owl:machineLearningAlgorithms.
+:dataWarehouse a owl:bigDataPatterns.
+:IDE a owl:tools.
+:linux a owl:server.
+  [] a owl:AllDifferent;
+    owl:distinctMembers
+      ( :linearRegression
+        :dataWarehouse
+        :IDE
+        :linux).
+:machineLearning a owl:Class.
+:versionControlSystem a owl:Class.
+:linux a owl:Class.
+ [] a  owl:AllDisjointClasses;
+   owl:members
+     (:machineLearning
+      :versionControlSystem
+      :linux).
+:continiousIntegrationTool a owl:Class.
+:programmingLanguage a owl:Class;
+  owl:disjoinedWith :continiousIntegrationTool.
+:dataStorage a owl:Class.
+:storage a owl:Class;
+          owl:equivalentClass :dataStorage.
+:versionControlSystem a owl:Class.
+:git a :versionControlSystem.
+:mercurial a :versionControlSystem;
+  owl:differentFrom :git.
+:PartOfDigitalTwin a owl:Class.
+:Sensor a :PartOfDigitalTwin.
+:Detector a :PartOfDigitalTwin;
+  owl:sameAs :Sensor.
+:DigitalTwin a owl:Class.
+:Dispatcher a owl:Class.
+:manager a owl:ObjectProperty.
+:Dispatcher :manager :DigitalTwin.
+:weight rdf:type owl:DatatypeProperty.
+:signal rdf:type owl:DatatypeProperty.
+:parallelComputations a owl:ObjectProperty.
+:sequenceComputations a owl:ObjectProperty;
+    owl:inverseOf :parallelComputations.
+:structuredData a owl:Class.
+:dataStorage a owl:Class.
+:belong a owl:ObjectProperty.
+:dataScheme a owl:Class;
+  :belong :dataStorage;
+   owl:TransitiveProperty :structuredData.
+:controlSystem rdf:type rdfs:Class.
 :digitalTwin rdfs:subClassOf :controlSystem.
-:machineLearning schema:isPartOf :digitalTwin.
-:machineLearningAlgorithms schema:isPartOf :machineLearning.
-:dataStorage schema:isPartOf :machineLearning.
-:reinforcementLearningAlgorithms schema:isPartOf :machineLearningAlgorithms.
-:neuralNetwork schema:isPartOf :machineLearning.
-:linearRegression schema:isPartOf :machineLearningAlgorithms.
-:logisticRegression schema:isPartOf :machineLearningAlgorithms.
-:decisionTree schema:isPartOf :machineLearningAlgorithms.
-:svm schema:isPartOf :machineLearningAlgorithms.
-:naiveBayes schema:isPartOf :machineLearningAlgorithms.
-:kNN schema:isPartOf :machineLearningAlgorithms.
-:kMeans schema:isPartOf :machineLearningAlgorithms.
-:randomForest schema:isPartOf :machineLearningAlgorithms.
-:dimensionalityReductionAlgorithm schema:isPartOf :machineLearningAlgorithms.
-:gradientBoostingAlgorithm schema:isPartOf :machineLearningAlgorithms.
-:qLearning schema:isPartOf :reinforcementLearningAlgorithms.
-:temporalDifference schema:isPartOf :reinforcementLearningAlgorithms.
-:deepAdversarialNetworks schema:isPartOf :reinforcementLearningAlgorithms.
-:stateActionRewardStateAction schema:isPartOf :reinforcementLearningAlgorithms.
-:deepQNetwork schema:isPartOf :reinforcementLearningAlgorithms.
-:dataScheme schema:isPartOf :dataStorage.
-:inMemoryDataStorage rdf:type :dataStorage.
-:triggers schema:isPartOf :dataStorage.
-:constraints schema:isPartOf :dataStorage.
-:accessGrants schema:isPartOf :dataStorage.
-:artificialNeuron schema:isPartOf :neuralNetwork.
-:weight schema:isPartOf :neuralNetwork.
-:signal schema:isPartOf :neuralNetwork.
-:synapse schema:isPartOf :neuralNetwork.
-:layer schema:isPartOf :neuralNetwork.
-:python a yago:ProgrammingLanguage.
-:machineLearning rdfs:subClassOf :digitalTwin.
-:virtualization rdfs:subClassOf :digitalTwin.
-:bigData rdfs:subClassOf :digitalTwin.
-:emulation rdfs:subClassOf :virtualization.
-:simulation rdfs:subClassOf :virtualization.
-:reinforcementLearning rdf:type :machineLearning.
-:deepLearning rdf:type :machineLearning.
-:supervisedLearning rdf:type :machineLearning.
-:unsupervisedLearning rdf:type :machineLearning.
-:semiSupervisedLearning rdf:type :machineLearning.
-:classification rdfs:subClassOf :supervisedLearning.
-:regression rdfs:subClassOf :supervisedLearning.
-:binaryClassification rdf:type :classification.
-:multiClassClassification rdf:type :classification.
-:clustering rdfs:subClassOf :unsupervisedLearning.
-:association rdfs:subClassOf :unsupervisedLearning.
-:dataStorage oplweb:isDefinedBy :structureOfData.
-:structuredData rdf:type :bigData.
-:unstructuredData rdf:type :bigData.
-:semiStructuredData rdf:type :bigData.
-:inMemoryComputations rdfs:subClassOf :bigData.
-:hardwareComputations rdfs:subClassOf :bigData.
-:parallelComputations rdfs:subClassOf :bigData.
-:sequenceComputations rdfs:subClassOf :bigData.
-:distributedComputations rdfs:subClassOf :bigData.
-:java a yago:ProgrammingLanguage.
-:bigDataPatterns rdfs:subClassOf :bigData.
-:dataLake rdf:type :bigDataPatterns.
-:dataWarehouse rdf:type :bigDataPatterns.
-:dataLocality rdf:type :bigDataPatterns.
-:dataImmutability rdf:type :bigDataPatterns.
-:dataStreaming rdf:type :bigDataPatterns.
-:model foaf:name :digitalTwin.
-:usedAlgorithms rdf:type skos:Collection ;
-	skos:member :randomForest, :kNN.
-:reinforcementLearningAlgorithms rdf:type skos:Collection;
-	skos:memberList (:deepQNetwork :stateActionRewardStateAction :deepAdversarialNetworks).
-:tools schema:isPartOf :softwarePackages.
-:IDE schema:isPartOf :tools.
-:git schema:isPartOf :tools.
-:slack schema:isPartOf :tools.
-:programmingLanguage schema:isPartOf :tools.
-:robotHand schema:isPartOf :hardware.
-:controller schema:isPartOf :hardware.
-:safetyAquarium schema:isPartOf :hardware.
-:ethernet schema:isPartOf :hardware.
-:server schema:isPartOf :hardware.
-:tilesPlates schema:isPartOf :hardware.
-:module schema:isPartOf :digitalTwin.
-:clientModule rdf:type :module.
-:serverModule rdf:type :module.
-:workstationModule rdf:type :module.
-:machineLearningAlgorithmsImplementation schema:isPartOf :serverModule.
-:GUI schema:isPartOf :clientModule.
-:commandParser schema:isPartOf :workstationModule.
-:tilesLocationVisualizer schema:isPartOf :GUI.
-:availiableMovesVisualizer schema:isPartOf :GUI.
-:gameStatusVisualizer schema:IsPartOf :GUI.
-:linux cc:license :GPLv2
-:linux cc:morePermissions cc:reproduction.
-:linux cc:morePermissions cc:distribution.
-:linux cc:attributionName :Linux.
-:linux a dbo:Software.
-:linux a yago:OperatingSystem.
-:ubuntu rdfs:subClassOf :linux.
-:debian rdfs:subClassOf :linux.
-:arch rdfs:subClassOf :linux.
-:bionicbeaver rdf:type :ubuntu.
-:kubuntu rdf:type :ubuntu.
-:xubuntu rdf:type :ubuntu.
-:machineLearningAlgorithms a dbo:type.
-:dataStorage a dbo:type.
-:neuralNetwork a dbo:type.
-:reinforcementLearningAlgorithms a dbo:type.
-:digitalTwin a dbo:type.
-:machineLearning a dbo:type.
-:correlation schema:IsPartOf :machineLearning.
-:softwarePackages schema:isPartOf :controlSystem.
-:technologicalProcess schema:isPartOf :controlSystem.
-:sensor schema:isPartOf :digitalTwin.
-:detector schema:isPartOf :digitalTwin.
-:bigData schema:isPartOf :controlSystem.
-:pipeline schema:isPartOf :controlSystem.
-:artificialNeuralNetwork schema:isPartOf :digitalTwin.
-:programmingLanguage schema:isPartOf :developmentTools.
-:objectOriented rdf:type :programmingLanguage.
-:functional rdf:type :programmingLanguage.
-:procedural rdf:type :programmingLanguage.
-:variables schema:isPartOf :programmingLanguage.
-:methods schema:isPartOf :programmingLanguage.
-:IDE schema:isPartOf :developmentTools.
-:laptop schema:IsPartOf :developmentTools.
-:machineVision schema:isPartOf :machineLearning.
-:machineVision schema:isPartOf :digitalTwin.
-:correlation rdf:type :machineLearning.
-:multilayerPerceptron rdf:type :artificialNeuralNetwork.
-:Modelica schema:isPartOf :developmentTools.
-:git schema:IsPartOf :developmentTools.
-:svn schema:IsPartOf :developmentTools.
-:mercurial schema:IsPartOf :developmentTools.
-:jira schema:IsPartOf :developmentTools.
-:knowledgeBase schema:IsPartOf :developmentTools.
-:slack schema:IsPartOf :developmentTools.
-:jenkins schema:IsPartOf :developmentTools.
-:git rdf:type :versionControlSystem.
-:svn rdf:type :versionControlSystem.
-:mercurial rdf:type :versionControlSystem.
-:github rdf:type :git.
-:gitlab rdf:type :git.
-:bitbucket rdf:type :git.
-:jenkins rdf:type :continiousIntegrationTool.
-:travisCI rdf:type :continiousIntegrationTool.
-:Java schema:IsPartOf :JVM.
-:librariesRepository schema:IsPartOf :developmentTools.
-:programmableLogicControllers schema:isPartOf :digitalTwin.
-:maven rdf:type :librariesRepository.
-:gradle rdf:type :librariesRepository.
-:sbt rdf:type :librariesRepository.
-:ant rdf:type :librariesRepository.
-:IntelIjIdea rdf:type :IDE.
-:MSVisualStudio rdf:type :IDE.
-:Eclipse rdf:type :IDE.
-:mathematicalMorphology schema:isPartOf :machineLearning.
-:machineLearning dcterms:description :setOfConcepts.
-:mathematicalMorphology a dbo:type.
-:learningWithATeacher schema:isPartOf :machineLearning.
-:learningWithATeacher a dbo:type.
-:analysisOfInternalStructureOfImages schema:isPartOf :machineVision.
-:analysisOfInternalStructureOfImages  a dbo:type.
-:dataStructures schema:isPartOf :programmingLanguage.
-:keyWords schema:isPartOf :programmingLanguage.
-:controlStructures schema:isPartOf :programmingLanguage.
-:validationRules schema:isPartOf :programmingLanguage.
-:syntax schema:isPartOf :programmingLanguage.
+:layer a owl:Class.
+:neuralNetwork a owl:Class.
+:madeOf	a owl:ObjectProperty.
+:madeOf	rdfs:Domain :neuralNetwork;
+	rdfs:Range :layer.
+:ReinforcmentMachineLearning a owl:Class;
+        :rdfs:subClassOf
+        [ a owl:Restriction;
+          owl:onProperty :machineLearningAlgorithms;
+          owl:allValuesFrom :ReinforcmentLearning].
+:Database a owl:Class;
+        :rdfs:subClassOf
+        [ a owl:Restriction;
+          owl:onProperty :dataStructure;
+          owl:allValuesFrom :NonReletionalDatabase].
+:ProgramModule a owl:Class;
+        :rdfs:subClassOf
+        [ a owl:Restriction;
+          owl:onProperty :localVariables;
+          owl:allValuesFrom :ClientModule].
+:MacOS a owl:Class;
+        :rdfs:subClassOf
+        [ a owl:Restriction;
+          owl:onProperty :internalVariables;
+          owl:someValuesFrom :Unix].
+:Scala a owl:Class;
+        :rdfs:subClassOf
+        [ a owl:Restriction;
+          owl:onProperty :functionalPatterns;
+          owl:someValuesFrom :Haskell].
+:RobotController a owl:Class;
+        :rdfs:subClassOf
+        [ a owl:Restriction;
+          owl:onProperty :textEditor;
+          owl:someValuesFrom :IDE].
+:RobotControllerCompiler a owl:Class;
+        :rdfs:subClassOf
+        [ a owl:Restriction;
+          owl:onProperty :compiler;
+          owl:hasValue :MelfaIVCompiler].
+:ProgramModules a owl:Class;
+        :rdfs:subClassOf
+        [ a owl:Restriction;
+          owl:onProperty :messageBroker;
+          owl:hasValue :RabbitMq].
+:DistributedFileSystem a owl:Class;
+        :rdfs:subClassOf
+        [ a owl:Restriction;
+          owl:onProperty :nodesLocality;
+          owl:hasValue :Distributed].
