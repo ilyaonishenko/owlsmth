@@ -65,47 +65,47 @@
 :madeOf	rdfs:Domain :neuralNetwork;
 	rdfs:Range :layer.
 :ReinforcmentMachineLearning a owl:Class;
-        :rdfs:subClassOf
+        rdfs:subClassOf
         [ a owl:Restriction;
           owl:onProperty :machineLearningAlgorithms;
           owl:allValuesFrom :ReinforcmentLearning].
 :Database a owl:Class;
-        :rdfs:subClassOf
+        rdfs:subClassOf
         [ a owl:Restriction;
           owl:onProperty :dataStructure;
           owl:allValuesFrom :NonReletionalDatabase].
 :ProgramModule a owl:Class;
-        :rdfs:subClassOf
+        rdfs:subClassOf
         [ a owl:Restriction;
           owl:onProperty :localVariables;
           owl:allValuesFrom :ClientModule].
 :MacOS a owl:Class;
-        :rdfs:subClassOf
+        rdfs:subClassOf
         [ a owl:Restriction;
           owl:onProperty :internalVariables;
           owl:someValuesFrom :Unix].
 :Scala a owl:Class;
-        :rdfs:subClassOf
+        rdfs:subClassOf
         [ a owl:Restriction;
           owl:onProperty :functionalPatterns;
           owl:someValuesFrom :Haskell].
 :RobotController a owl:Class;
-        :rdfs:subClassOf
+        rdfs:subClassOf
         [ a owl:Restriction;
           owl:onProperty :textEditor;
           owl:someValuesFrom :IDE].
 :RobotControllerCompiler a owl:Class;
-        :rdfs:subClassOf
+        rdfs:subClassOf
         [ a owl:Restriction;
           owl:onProperty :compiler;
           owl:hasValue :MelfaIVCompiler].
 :ProgramModules a owl:Class;
-        :rdfs:subClassOf
+        rdfs:subClassOf
         [ a owl:Restriction;
           owl:onProperty :messageBroker;
           owl:hasValue :RabbitMq].
 :DistributedFileSystem a owl:Class;
-        :rdfs:subClassOf
+        rdfs:subClassOf
         [ a owl:Restriction;
           owl:onProperty :nodesLocality;
           owl:hasValue :Distributed].

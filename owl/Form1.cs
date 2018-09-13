@@ -4,6 +4,8 @@ using VDS.RDF;
 using VDS.RDF.Parsing;
 using VDS.RDF.Query;
 using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 
 namespace owl
 {
@@ -112,8 +114,10 @@ namespace owl
             var graph = new Graph();
             parser.Load(graph, @"rdf.txt");
 
-           // var owlGraph = new Graph();
-          //  owlGraph.LoadFromFile("rdf.owl", new TurtleParser());
+            parser.Load(graph, @"rdf.owl");
+
+            //var owlGraph = new Graph();
+            //owlGraph.LoadFromFile("rdf.owl", new TurtleParser());
 
             int number_triplets;
             //number_triplets = graph.Triples.Count + owlGraph.Triples.Count;
@@ -157,6 +161,7 @@ namespace owl
             var parser = new Notation3Parser();
             var graph = new Graph();
             parser.Load(graph, @"rdf.txt");
+            parser.Load(graph, @"rdf.owl");
             Column1.HeaderText = "Subject";
             Column2.HeaderText = "Property";
             Column3.HeaderText = "Object";
@@ -202,6 +207,7 @@ namespace owl
             var parser = new Notation3Parser();
             var graph = new Graph();
             parser.Load(graph, @"rdf.txt");
+            parser.Load(graph, @"rdf.owl");
             Column1.HeaderText = "Subject";
             Column2.HeaderText = "Property";
             Column3.HeaderText = "Object";
@@ -243,6 +249,7 @@ namespace owl
             var parser = new Notation3Parser();
             var graph = new Graph();
             parser.Load(graph, @"rdf.txt");
+            parser.Load(graph, @"rdf.owl");
             Column1.HeaderText = "Subject";
             Column2.HeaderText = "Property";
             Column3.HeaderText = "Object";
@@ -283,6 +290,7 @@ namespace owl
             var graph = new Graph();
             var parser = new Notation3Parser();
             parser.Load(graph, @"rdf.txt");
+            parser.Load(graph, @"rdf.owl");
             ListBox listBox1 = new ListBox();
             ListBox listBox2 = new ListBox();
             ListBox listBox3 = new ListBox();
@@ -348,7 +356,8 @@ PREFIX cc:<https://creativecommons.org/ns#>
                 else if (prop.StartsWith("attributionName")) prop = "cc:" + prop;
                 else if (prop.StartsWith("memberList")) prop = "skos:" + prop;
                 else if (prop.StartsWith("member")) prop = "skos:" + prop;
-                else if (prop.StartsWith("subjectdescri")) prop = "skos:" + prop;
+                else if (prop.StartsWith("subjectdescrip")) prop = "skos:" + prop;
+                else if (prop.StartsWith("manage")) prop = ":" + prop;
                 string getInsomnia = @"
 PREFIX :<http://wopqw.blogspot.com/>
 PREFIX schema:<http://schema.org/>
@@ -480,6 +489,7 @@ PREFIX :<https://ddddtryyaiafarjfka.blogspot.ru/>
                 else if (prop.StartsWith("morePermissions")) prop = "cc:" + prop;
                 else if (prop.StartsWith("attributionName")) prop = "cc:" + prop;
                 else if (prop.StartsWith("description")) prop = "dcterms:" + prop;
+                else if (prop.StartsWith("manage")) prop = ":" + prop;
                 string getInsomnia = @"
 PREFIX :<http://wopqw.blogspot.com/>
 PREFIX schema:<http://schema.org/>
@@ -536,6 +546,7 @@ PREFIX cc:<https://creativecommons.org/ns#>
                 else if (prop.StartsWith("morePermissions")) prop = "cc:" + prop;
                 else if (prop.StartsWith("attributionName")) prop = "cc:" + prop;
                 else if (prop.StartsWith("description")) prop = "dcterms:" + prop;
+                else if (prop.StartsWith("manage")) prop = ":" + prop;
                 string getInsomnia = @"
 PREFIX :<http://wopqw.blogspot.com/>
 PREFIX schema:<http://schema.org/>
@@ -589,6 +600,76 @@ PREFIX cc:<https://creativecommons.org/ns#>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            var graph = new Graph();
+            var parser = new Notation3Parser();
+            parser.Load(graph, @"rdf.txt");
+            parser.Load(graph, @"rdf.owl");
+            ListBox listBox1 = new ListBox();
+            ListBox listBox2 = new ListBox();
+            ListBox listBox3 = new ListBox();
+            foreach (Triple triple in graph.Triples)
+            {
+                listBox1.Items.Add(triple.Subject);
+                listBox2.Items.Add(triple.Object);
+                listBox3.Items.Add(triple.Predicate);
+            }
+            listBox1_1.Items.Clear();
+
+            listBox1_1.Items.Clear();
+            //int sel1 = comboBox1.SelectedIndex;
+            //Object sel11 = comboBox1.SelectedItem;
+            //string sub = sel11.ToString();
+            //sub = " :" + sub;
+            string getInsomnia = @"
+PREFIX :<http://wopqw.blogspot.com/>
+PREFIX schema:<http://schema.org/>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf:<http://xmlns.com/foaf/0.1/>
+PREFIX dbo:<http://dbpedia.org/ontology/>
+PREFIX yago:<http://yago-knowledge.org/resource/>
+PREFIX skos:<http://www.w3.org/2004/02/skos/core/>
+PREFIX dcterms:<http://purl.org/dc/elements/1.1/subject>
+PREFIX oplweb:<http://www.openlinksw.com/schemas/oplweb#>
+PREFIX cc:<https://creativecommons.org/ns#>
+	        SELECT  ?sub ?prop ?obj 
+	        WHERE {
+                ?sub ?prop ?obj.
+            }";
+            string s = "";
+            SparqlResultSet resultSet = graph.ExecuteQuery(getInsomnia) as SparqlResultSet;
+            dataGridView1.RowCount = resultSet.Count + 1;
+            var subjects = new List<string>(); 
+            var props = new List<string>();
+            var objs = new List<string>();
+            for (int i=0; i<resultSet.Count; i++)
+            {
+                SparqlResult result = resultSet[i];
+                if (GetNodeString(result["prop"]).Contains("manage") || GetNodeString(result["prop"]).Contains("canCall") || GetNodeString(result["prop"]).Contains("isCausedBy") || GetNodeString(result["prop"]).Contains("isPartOf") || GetNodeString(result["prop"]).Contains("hasProperty"))
+                {
+                    subjects.Add(GetNodeString(resultSet[i]["sub"]));
+                    props.Add(GetNodeString(resultSet[i]["prop"]));
+                    objs.Add(GetNodeString(resultSet[i]["obj"]));
+                }
+            }
+
+            var zipped = props.Zip(subjects, (prop, subj) => Tuple.Create(prop, subj)).Zip(objs, (t1, obj) => Tuple.Create(t1.Item2, t1.Item1, obj));
+
+            zipped.GroupBy(tuple => Tuple.Create(tuple.Item1, tuple.Item2))
+                .Where(group => group.Count() > 1)
+                .SelectMany(group => group)
+                .Select((el, i) => Tuple.Create(i, el))
+                .ToList()
+                .ForEach(tuple => {
+                    dataGridView1.Rows[tuple.Item1].Cells[0].Value = tuple.Item2.Item1;
+                    dataGridView1.Rows[tuple.Item1].Cells[1].Value = tuple.Item2.Item2;
+                    dataGridView1.Rows[tuple.Item1].Cells[2].Value = tuple.Item2.Item3;
+                    }
+                );
         }
     }
 }

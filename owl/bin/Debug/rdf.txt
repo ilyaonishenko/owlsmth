@@ -183,6 +183,10 @@
 :dataStorage rdf:type :Class.
 :supervisedLearning rdf:type :Class.
 :bigData rdf:type :Class.
+:neuralNetwork :manage :digitalTwin.
+:programmingLanguage :manage :neuralNetwork.
+:inMemoryComputations :manage :controlSystem.
+:inMemoryComputations :manage :BigData.
 :inMemoryComputations rdf:type :Class.
 :hardwareComputations rdf:type :Class.
 :parallelComputations rdf:type :Class.
@@ -210,13 +214,10 @@
 :java rdf:type :Individual.
 :scala rdf:type :Individual.
 :python rdf:type :Individual.
-:inOrderTo rdf:type :ObjectProperty.
+
 :causes rdf:type :ObjectProperty.
 :isCausedBy rdf:type :ObjectProperty.
-:means rdf:type :ObjectProperty.
 :hasProperty rdf:type :ObjectProperty.
-:belong rdf:type :ObjectProperty.
-:actionStatus rdf:type :ObjectProperty.
 :isPartOf rdf:type :ObjectProperty.
 :canCall rdf:type :ObjectProperty.
 :manage rdf:type :ObjectProperty.
